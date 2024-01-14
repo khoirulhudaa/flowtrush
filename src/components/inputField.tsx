@@ -13,8 +13,8 @@ interface inputProps {
     id?: string,
     typeInput?: string,
     options?: { label: string, value: string }[],
-    onError?: string | undefined,
-    onTouched?: boolean | undefined,
+    onError?: any,
+    onTouched?: any,
     disabled?: boolean,
     datackEditor?: any,
     onChangeCKEditor?: any

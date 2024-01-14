@@ -126,7 +126,7 @@ switch(type) {
                         value={resetPassword.values.password} 
                         name='password' 
                         label='New password'
-                        onError={resetPassword.errors.password}
+                        onError={resetPassword.errors.password ?? ''}
                         onTouched={!!resetPassword.touched.password}
                         onChange={resetPassword.handleChange} 
                         onBlur={resetPassword.handleBlur} 
