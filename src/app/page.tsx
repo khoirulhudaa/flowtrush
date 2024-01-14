@@ -91,7 +91,7 @@ const Home = () => {
 
   return (
     <div className='flex w-screen h-max md:h-screen md:overflow-hidden'>
-      <div className='relative px-4 w-full h-max md:h-screen bg-white'>
+      <div className='relative px-4 w-full h-screen md:h-screen bg-white'>
         <Header 
           create={() => {
             setShow(true)
