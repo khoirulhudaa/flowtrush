@@ -12,7 +12,7 @@ export const useUpdateTaskFormik = ({onError, onResponse}: {onError?: any, onRes
 
   const task_id = store.getState().taskSlice.task_id
   const taskData = store.getState().taskSlice.task || []
-  const task = taskData[0].length > 1 ? taskData[0]?.filter((data: any) => data.task_id === task_id) : taskData[0].length === 1 ? taskData[0] : null
+  const task = taskData[0] && taskData[0].length > 1 ? taskData[0]?.filter((data: any) => data.task_id === task_id) : taskData[0]?.length === 1 ? taskData[0] : null;
 
   const formik = useFormik<taskInterface>({
     initialValues: {
