@@ -10,11 +10,11 @@ const api = axios.create({
 
 api.interceptors.request.use(async function (config) {
 
-  // const token = store.getState().authSlice.token;
+  const token = store.getState().authSlice.token;
 
-  // if (token) {
-  //   config.headers["Authorization"] = token;
-  // }
+  if (token) {
+    config.headers["Authorization"] = token;
+  }
 
   if (config.data instanceof FormData) {
     config.headers["Content-Type"] = "multipart/form-data";
@@ -35,8 +35,7 @@ api.interceptors.response.use(function (response) {
 }, function (error) {
 
   if (error.response.data.message === "jwt expired" || error.response.data.message === "You don't have access permissions.") {
-      // console.log("error interceptors new:", error)
-      // window.location.pathname = '/auth'
+      window.location.pathname = '/auth'
   }
 
   return Promise.reject(error);
