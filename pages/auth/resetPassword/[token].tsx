@@ -1,7 +1,6 @@
 "use client"
 
 import '@/app/globals.css'
-import FormGroup from '@/components/formGroup'
 import ProviderMain from '@/store/provider'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -9,6 +8,12 @@ import { BgAuth } from '../../../public/images'
 import SweetAlert from '@/components/alertBox'
 import { useDispatch } from 'react-redux'
 import { authSignOut } from '@/store/authSlice'
+import dynamic from 'next/dynamic'
+
+const FormGroup = dynamic(() => import('@/components/formGroup'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
 
 const ResetPassword = () => {
 

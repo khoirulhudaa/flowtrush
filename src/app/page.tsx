@@ -1,9 +1,7 @@
 "use client"
 
 import '@/app/globals.css';
-import Header from "@/components/Layouts/header";
 import Button from "@/components/button";
-import PopupBoard from '@/components/popupBoard';
 import ProviderMain from '@/store/provider';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -14,6 +12,16 @@ import Link from 'next/link';
 import { getNameWorkspace, getWorkspaceData, getWorkspaceId } from '@/store/workSpaceSlice';
 import { FaPenAlt, FaPlus, FaTrash } from 'react-icons/fa';
 import SweetAlert from '@/components/alertBox';
+import dynamic from 'next/dynamic';
+
+const Header = dynamic(() => import('@/components/Layouts/header'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
+const PopupBoard = dynamic(() => import('@/components/popupBoard'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
 
 const Home = () => {
 
@@ -91,7 +99,7 @@ const Home = () => {
 
   return (
     <div className='flex w-screen h-max md:h-screen md:overflow-hidden'>
-      <div className='relative px-4 w-full h-screen md:h-screen bg-white'>
+      <div className='relative px-4 w-full min-h-screen max-h-max md:h-screen bg-white'>
         <Header 
           create={() => {
             setShow(true)

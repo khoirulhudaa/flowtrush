@@ -1,11 +1,7 @@
 "use client"
 
 import '@/app/globals.css'
-import Header from '@/components/Layouts/header'
-import Sidebar from '@/components/Layouts/sidebar'
 import SweetAlert from '@/components/alertBox'
-import Button from '@/components/button'
-import PopupBoard from '@/components/popupBoard'
 import API from '@/services/api'
 import { getboardId } from '@/store/boardSlice'
 import ProviderMain from '@/store/provider'
@@ -14,6 +10,24 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { FaArrowLeft, FaArrowRight, FaEye, FaPlus, FaSignOutAlt, FaTrash } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
+import dynamic from 'next/dynamic'
+
+const Header = dynamic(() => import('@/components/Layouts/header'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
+const Button = dynamic(() => import('@/components/button'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
+const Sidebar = dynamic(() => import('@/components/Layouts/sidebar'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
+const PopupBoard = dynamic(() => import('@/components/popupBoard'), {
+  ssr: false,
+  loading: () => <div className='w-screen h-screen z-[999999999999999] bg-white text-black text-center flex justify-center items-center text-[20px] font-normal fixed left-0 top-0'><p>Loading...</p></div>
+})
 
 const Board = () => {
 
