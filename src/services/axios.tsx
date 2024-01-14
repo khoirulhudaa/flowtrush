@@ -33,7 +33,7 @@ api.interceptors.response.use(function (response) {
   return response
 
 }, function (error) {
-  if (error.response.data.message === "jwt expired" || error.response.data.message === "You don't have access permissions." || error.response.status === 404) {
+  if (error.response.data.message === "jwt expired" || error.response.data.message === "You don't have access permissions." || error.response.status === 404 || error) {
       window.location.pathname = '/auth'
   }
 
